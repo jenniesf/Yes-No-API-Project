@@ -1,0 +1,365 @@
+/* BACKGROUND CSS */
+
+/* Taken from: https://codepen.io/LoneWolfsMoon/pen/KQaxNd */
+body {
+  margin: 0;
+  padding: 0;
+}
+@keyframes move-twink-back {
+  from {
+      background-position: 0 0;
+  }
+  to {
+      background-position: -10000px 5000px;
+  }
+}
+@-webkit-keyframes move-twink-back {
+  from {
+      background-position: 0 0;
+  }
+  to {
+      background-position: -10000px 5000px;
+  }
+}
+@-moz-keyframes move-twink-back {
+  from {
+      background-position: 0 0;
+  }
+  to {
+      background-position: -10000px 5000px;
+  }
+}
+@-ms-keyframes move-twink-back {
+  from {
+      background-position: 0 0;
+  }
+  to {
+      background-position: -10000px 5000px;
+  }
+}
+
+@keyframes move-clouds-back {
+  from {
+      background-position: 0 0;
+  }
+  to {
+      background-position: 10000px 0;
+  }
+}
+@-webkit-keyframes move-clouds-back {
+  from {
+      background-position: 0 0;
+  }
+  to {
+      background-position: 10000px 0;
+  }
+}
+@-moz-keyframes move-clouds-back {
+  from {
+      background-position: 0 0;
+  }
+  to {
+      background-position: 10000px 0;
+  }
+}
+@-ms-keyframes move-clouds-back {
+  from {
+      background-position: 0;
+  }
+  to {
+      background-position: 10000px 0;
+  }
+}
+
+.stars,
+.twinkling,
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.stars {
+  background: #000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+  z-index: -103;
+}
+
+.twinkling {
+  background: transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+  z-index: -102;
+
+  animation: move-twink-back 200s linear infinite;
+}
+
+.clouds {
+  /* background: transparent url(https://i.imgur.com/v3xI5rv.png) repeat top center; */
+  z-index: -100;
+
+  animation: move-clouds-back 600s linear infinite;
+}
+
+
+/* BALL CSS */
+.ball {
+  height: 400px;
+  width: 400px;
+  background: rgb(25, 25, 25);
+  border-radius: 100%;
+  position: relative;
+  box-shadow: inset -10px 10px 50px rgba(0, 0, 0, 0.4), inset 5px -5px 50px rgba(0, 0, 0, 1),
+      inset 50px -50px 200px rgba(0, 0, 0, 1), inset 0px -20px 20px rgba(60, 0, 60, 1),
+      inset -1px 2px 20px 4px #ffffff7a, 0 0 50px #ffffffa1, 0 0 30px 0px #3900bf8c;
+}
+
+.ball__response {
+  position: absolute;
+  background: linear-gradient(45deg, rgba(20, 0, 20, 1) 0%, rgba(40, 0, 20, 1) 100%);
+  width: 160px;
+  height: 160px;
+  border-radius: 100%;
+  border: solid 4px rgba(20, 20, 20, 0.8);
+  box-shadow: 10px -10px 10px rgba(20, 20, 20, 0.6), 10px -10px 1px rgba(20, 20, 20, 0.5),
+      -10px -10px 1px rgba(20, 20, 20, 0.5), 10px 10px 1px rgba(23, 20, 20, 0.5), -10px 10px 1px rgba(19, 17, 17, 0.5),
+      8px -10px 10px rgba(20, 20, 20, 0.6), -8px 10px 10px rgba(39, 39, 39, 0.6),
+      inset -10px 10px 40px rgba(200, 0, 20, 0.1), inset 10px -10px 40px rgba(20, 0, 200, 0.1);
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.ball__triangle {
+  -webkit-transform: translate(-50%, -50%) rotate(5deg);
+  transform: translate(-50%, -50%) rotate(5deg);
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  border-left: 55px solid transparent;
+  border-right: 55px solid transparent;
+  opacity: 0;
+}
+
+.ball__answer {
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 2px black;
+  color: white;
+  text-align: center;
+  -webkit-transform: translate(-50%, -50%) rotate(5deg);
+  transform: translate(-50%, -50%) rotate(5deg);
+  position: absolute;
+  text-transform: uppercase;
+  width: 55px;
+  height: 60px;
+  left: 51%;
+  top: 52%;
+  opacity: 0;
+  transition: ease-in all 0.2s;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #3f04ca, 0 0 35px #3f04ca, 0 0 40px #3f04ca,
+      0 0 50px #3f04ca, 0 0 75px #3f04ca;
+}
+
+.ball .ball__answer {
+  opacity: 1;
+  -webkit-transform: translate(-50%, -50%) rotate(0deg);
+  transform: translate(-50%, -50%) rotate(0deg);
+  transition: ease-in all 0.2s;
+}
+
+.ball .ball__triangle {
+  border-top: 90px solid #3f04ca;
+  -webkit-transform: translate(-50%, -50%) rotate(0deg);
+  transform: translate(-50%, -50%) rotate(0deg);
+  opacity: 1;
+  transition: ease-in all 0.2s;
+}
+
+.shake__ball {
+  animation: shake 1s cubic-bezier(0.5, -0.75, 0.7, 2) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+      transform: translate3d(-5px, 0, 0);
+  }
+
+  20%,
+  80% {
+      transform: translate3d(10px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+      transform: translate3d(-10px, 0, 0);
+  }
+
+  40%,
+  60% {
+      transform: translate3d(5px, 0, 0);
+  }
+}
+
+@media (max-width: 500px) {
+  .ball {
+      height: 275px;
+      width: 275px;
+  }
+
+  .ball__response {
+      width: 110px;
+      height: 110px;
+  }
+
+  .ball__triangle {
+      border-left: 40px solid transparent;
+      border-right: 40px solid transparent;
+  }
+
+  .ball__answer {
+      font-size: 0.8rem;
+      width: 30px;
+      height: 45px;
+  }
+  .ball .ball__triangle {
+      border-top: 50px solid #3f04ca;
+  }
+}
+
+
+/* MAIN CSS */
+
+* {
+  font-family: 'Audiowide', cursive;
+}
+
+body {
+  background-color: #0b132b;
+  font-size: 16px;
+  overflow-y: hidden;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.interaction__container {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.input {
+  font-size: 1.2rem;
+  padding: 10px 10px 10px 0px;
+  display: block;
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid #757575;
+  color: white;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input ~ label {
+  position: absolute;
+  font-size: 1.4rem;
+  font-weight: 700;
+  top: -2.2rem;
+  left: 2rem;
+  color: white;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #3f04ca, 0 0 35px #3f04ca, 0 0 40px #3f04ca,
+      0 0 50px #3f04ca, 0 0 75px #3f04ca;
+}
+
+.input__bar {
+  position: relative;
+  display: block;
+  content: '';
+  height: 2px;
+  width: 100%;
+  bottom: 1px;
+  position: absolute;
+  background: white;
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #3f04ca, 0 0 35px #3f04ca, 0 0 40px #3f04ca,
+      0 0 50px #3f04ca, 0 0 75px #3f04ca;
+}
+
+.input:focus ~ .input__bar:before,
+.input:focus ~ .input__bar:after {
+  width: 50%;
+}
+
+.input[type='text'] {
+  background: transparent;
+  border: none;
+}
+
+.button {
+  border: 0;
+  border-radius: 10px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  background: white;
+  color: black;
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+}
+
+.button:hover {
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 1px #3f04ca, 0 0 2px #3f04ca, 0 0 2px #3f04ca,
+      0 0 0px #3f04ca, 0 0 2px #3f04ca;
+}
+
+.button:disabled {
+  color: grey;
+  cursor: not-allowed;
+}
+
+.error {
+  position: absolute;
+  color: white;
+  margin: 0.3rem 0.8rem;
+}
+
+@media (max-width: 500px) {
+  .interaction__container {
+      margin-bottom: 1rem;
+  }
+
+  .input {
+      width: 200px;
+      font-size: 1rem;
+  }
+
+  .input ~ label {
+      font-size: 1rem;
+      top: -2.2rem;
+      left: 1.5rem;
+  }
+
+  .button {
+      padding: 0.6rem 0.8rem;
+      margin: 2rem 0;
+  }
+
+  .error {
+      margin: 0.3rem;
+      font-size: 0.7rem;
+  }
+}
